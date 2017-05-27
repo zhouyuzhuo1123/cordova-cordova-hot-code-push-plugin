@@ -31,4 +31,41 @@
 ### 第八步： 
 >修改www目录下的内容，例如：修改index.html中的代码，然后运行cordova-hcp build.再将index.html和chcp.json和chcp.manifest一起上传到服务器对应的位置。重新打开app将会看见更新的内容。
 
+---
+## 之前基本是在客户端打开后自动请求后台自动更新，如果想要客户端提示更新...
+### 第九步
+>将第七步中加入的代码 进行修改如下:
+```
+<chcp>
+    <auto-download enabled="false" />
+    <auto-install enabled="false" />
+    <config-file url=" 你的服务器访问路径/hotcode/chcp.json"/>
+</chcp>
+
+```
+>js中的代码就可以这样写
+```
+//备注：这里的使用了Framework7
+chcp.fetchUpdate(function(error, data) {
+    if(!error) {
+        myApp.modal({
+            title: "提示",
+            text: "有更新，确定更新吗?",
+            buttons: [{
+                text: '不更新'
+            }, {
+                text: "立即更新",
+                onClick: function() {
+                    myApp.showPreloader('正在升级，升级完毕应用将自动重启...');
+                    chcp.installUpdate(function(error) {
+                        myApp.alert("更新完成", ["提示"]);
+                    })
+                }
+            }]
+        })
+    } else {
+        myApp.alert("你当前是最新版本", ["提示"]);
+    }
+})
+   ```
 
