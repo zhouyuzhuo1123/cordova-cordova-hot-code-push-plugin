@@ -110,6 +110,7 @@ chcp.fetchUpdate(function(error, data) {
    ```
    cordova-hcp build //www文件夹下生成两个热更新所需文件
    ```
+---
 3. 执行打包命令：
 
    ```
