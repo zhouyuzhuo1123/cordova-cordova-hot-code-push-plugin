@@ -86,19 +86,16 @@ chcp.fetchUpdate(function(error, data) {
 
    ```
    cordova platform add android
-
    ```
 3. 安装plugin cordova-hot-code-push-plugin：
 
    ```
    cordova plugin add cordova-hot-code-push-plugin
-
    ```
 4. 全局安装 cordova-hot-code-push-cl:
 
    ```
    npm install -g cordova-hot-code-push-cli
-
    ```
 
 ### 二 打包流程
@@ -107,13 +104,11 @@ chcp.fetchUpdate(function(error, data) {
 
    ```
    cordova-hcp build //www文件夹下生成两个热更新所需文件
-
    ```
 3. 执行打包命令：
 
    ```
    cordova build //生成安卓平台apk 
-
    ```
    > apk生成目录:"platforms\android\build\outputs\apk"
    
