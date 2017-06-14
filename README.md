@@ -68,4 +68,54 @@ chcp.fetchUpdate(function(error, data) {
     }
 })
    ```
+# 编写可维护的Javascript代码
 
+- [欢迎来提issue进行改进](https://github.com/Kelichao/work.expressive)
+
+- [参考《编写可维护的JavaScript》](http://baike.baidu.com/link?url=zn9j-dvLCZyZ-BsCdBr5kO674AagHo4iMdq6zR1KDvxnDCV4VzlDZ_IBnMeg7fhOutujqk_zomnsWG-sFcfrZjwyVb-T8BfsDLFUAB99w72UdOEaIbcLMkA9_JnoF_ghH0ZxSQmn_vG_-POH2THmxWWkkTgeev2Yb0x6euwyNvK)
+
+- [wiki前端框架的基本的架构方案]( http://wiki.evun.cn/pages/viewpage.action?pageId=3933068)
+
+> 代码风格根据团队内部成员总结所得，大家有好的意见或建议可以一起来进行定制O(∩_∩)O
+
+
+# PDA 打包与热更新-发布流程
+### 一 打包环境
+1. cordova 全局安装
+2. 生成安卓平台：
+
+   ```
+   cordova platform add android
+
+   ```
+3. 安装plugin cordova-hot-code-push-plugin：
+
+   ```
+   cordova plugin add cordova-hot-code-push-plugin
+
+   ```
+4. 全局安装 cordova-hot-code-push-cl:
+
+   ```
+   npm install -g cordova-hot-code-push-cli
+
+   ```
+
+### 二 打包流程
+1. 将需要打包的文件防止www目录下。
+2. 执行命令：
+
+   ```
+   cordova-hcp build //www文件夹下生成两个热更新所需文件
+
+   ```
+3. 执行打包命令：
+
+   ```
+   cordova build //生成安卓平台apk 
+
+   ```
+   > apk生成目录:"platforms\android\build\outputs\apk"
+   
+### 三 热更新
+1. 将所更新文件放置www文件夹下，执行打包流程中的等2步。最后将www文件夹下所需更新文件以及生成的两个热更新文件放置服务器相应位置即可。详见[cordova-hotupdata](https://github.com/zhouyuzhuo1123/cordova-cordova-hot-code-push-plugin)
